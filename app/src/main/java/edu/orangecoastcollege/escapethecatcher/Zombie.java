@@ -1,6 +1,7 @@
 package edu.orangecoastcollege.escapethecatcher;
 
 public class Zombie {
+    // All done
 
     private int mRow;
     private int mCol;
