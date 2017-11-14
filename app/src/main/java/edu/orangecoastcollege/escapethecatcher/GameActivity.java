@@ -2,7 +2,6 @@ package edu.orangecoastcollege.escapethecatcher;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -51,8 +50,6 @@ public class GameActivity extends AppCompatActivity implements  GestureDetector.
 
     private int exitRow;
     private int exitCol;
-
-    private Handler handler;
 
     //  WINS AND LOSSES
     private int wins;
@@ -236,27 +233,13 @@ public class GameActivity extends AppCompatActivity implements  GestureDetector.
         {
             wins++;
             winsTextView.setText(getString(R.string.wins, wins));
-            /*
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startNewGame();
-                }
-            }, 3000);
-            */
+
         }
         else if (player.getRow() == zombie.getRow()  && player.getCol() == zombie.getCol())
         {
             losses++;
             lossesTextView.setText(getString(R.string.losses, losses));
-            /*
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startNewGame();
-                }
-            }, 3000);
-            */
+
         }
     }
 
@@ -275,9 +258,15 @@ public class GameActivity extends AppCompatActivity implements  GestureDetector.
 
     }
 
+    /**
+     * After the game is over, do a single tap to load the new game
+     * @param motionEvent
+     * @return
+     */
     @Override
     public boolean onSingleTapUp(MotionEvent motionEvent) {
-        return false;
+        startNewGame();
+        return true;
     }
 
     @Override
